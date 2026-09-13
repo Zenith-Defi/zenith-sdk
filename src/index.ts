@@ -11,6 +11,8 @@ export type {
   CreateInvoice,
   WebhookEndpoint,
   CreateWebhookEndpoint,
+  ApiKey,
+  CreateApiKey,
   WebhookEvent,
   WebhookEventMap,
   Page,

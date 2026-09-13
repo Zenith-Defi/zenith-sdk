@@ -97,7 +97,7 @@ The major version tracks the API protocol version. This table is the source of t
 
 | SDK version | API version | Testnet | Mainnet |
 |---|---|---|---|
-| 0.1.x | v0.1.0 | yes | no |
+| 0.1.x | v0.1.1 | yes | no |
 
 ## Types come from the API
 

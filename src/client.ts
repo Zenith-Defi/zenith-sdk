@@ -1,5 +1,7 @@
 import { ZenithApiError, type ZenithErrorBody } from "./errors.js";
 import type {
+  ApiKey,
+  CreateApiKey,
   CreateInvoice,
   CreateWebhookEndpoint,
   Invoice,
@@ -28,6 +30,7 @@ export class Zenith {
   readonly invoices: InvoicesResource;
   readonly payments: PaymentsResource;
   readonly webhookEndpoints: WebhookEndpointsResource;
+  readonly apiKeys: ApiKeysResource;
 
   private readonly apiKey: string;
   private readonly baseUrl: string;
@@ -43,6 +46,7 @@ export class Zenith {
     this.invoices = new InvoicesResource(this);
     this.payments = new PaymentsResource(this);
     this.webhookEndpoints = new WebhookEndpointsResource(this);
+    this.apiKeys = new ApiKeysResource(this);
   }
 
   /** @internal */
@@ -104,6 +108,23 @@ class PaymentsResource {
 
   list(params: ListParams = {}): Promise<Page<Payment>> {
     return this.client.request<Page<Payment>>("GET", "/v1/payments", { query: { limit: params.limit, cursor: params.cursor } });
+  }
+}
+
+class ApiKeysResource {
+  constructor(private readonly client: Zenith) {}
+
+  // The returned key includes `plaintext` exactly once; store it then.
+  create(input: CreateApiKey = {}): Promise<ApiKey & { plaintext: string }> {
+    return this.client.request("POST", "/v1/api-keys", { body: input });
+  }
+
+  list(): Promise<{ data: ApiKey[] }> {
+    return this.client.request("GET", "/v1/api-keys");
+  }
+
+  revoke(id: string): Promise<ApiKey> {
+    return this.client.request("POST", `/v1/api-keys/${encodeURIComponent(id)}/revoke`);
   }
 }
 
