@@ -1,12 +1,12 @@
 # @zenithpay/sdk
 
-TypeScript SDK for [Zenith](https://github.com/Elizabethxxx/zenith-api), a non-custodial crypto checkout on Stellar. Create invoices, list payments, verify webhooks, and send a customer to the hosted checkout page.
+TypeScript SDK for [Zenith](https://github.com/Zenith-Defi/zenith-api), a non-custodial crypto checkout on Stellar. Create invoices, list payments, verify webhooks, and send a customer to the hosted checkout page.
 
 This is the SDK layer of a three-repository project.
 
-- [zenith-api](https://github.com/Elizabethxxx/zenith-api) — the REST API, which owns the OpenAPI document this SDK is generated from.
+- [zenith-api](https://github.com/Zenith-Defi/zenith-api) — the REST API, which owns the OpenAPI document this SDK is generated from.
 - **@zenithpay/sdk** (this repo) — the client.
-- [zenith-web](https://github.com/Elizabethxxx/zenith-web) — the checkout page and dashboard, which use this SDK.
+- [zenith-web](https://github.com/Zenith-Defi/zenith-web) — the checkout page and dashboard, which use this SDK.
 
 Dependencies point one way: api, then sdk, then web. See [docs/multi-repo.md](docs/multi-repo.md).
 

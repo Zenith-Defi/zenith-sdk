@@ -6,9 +6,9 @@ Thanks for helping build the Zenith SDK. This gets you from a cold clone to a us
 
 Zenith is a non-custodial crypto checkout on Stellar: a merchant creates an invoice, a customer pays it, and the money lands in the merchant's own account. This repository is the TypeScript client for it.
 
-- **[zenith-api](https://github.com/Elizabethxxx/zenith-api)** — the REST API and the source of truth. It owns `openapi.json`, from which this SDK's types are generated.
+- **[zenith-api](https://github.com/Zenith-Defi/zenith-api)** — the REST API and the source of truth. It owns `openapi.json`, from which this SDK's types are generated.
 - **zenith-sdk** (you are here) — the client: `Zenith`, `webhooks.verify`, and the browser checkout helpers.
-- **[zenith-web](https://github.com/Elizabethxxx/zenith-web)** — the checkout page and dashboard, which use this SDK and never call the API directly.
+- **[zenith-web](https://github.com/Zenith-Defi/zenith-web)** — the checkout page and dashboard, which use this SDK and never call the API directly.
 
 Dependencies point one way: api, then sdk, then web, never reversed. This SDK depends on the API's published `openapi.json`; it never imports application code. The cross-repository rules are in [docs/multi-repo.md](docs/multi-repo.md).
 
@@ -44,7 +44,7 @@ test/
 Prerequisites: Node 20 or newer, pnpm 9 (`corepack enable`). No deployment of your own is needed; the unit tests use a mocked API.
 
 ```bash
-git clone https://github.com/Elizabethxxx/zenith-sdk
+git clone https://github.com/Zenith-Defi/zenith-sdk
 cd zenith-sdk
 pnpm install
 pnpm test          # unit tests, no network
@@ -53,7 +53,7 @@ pnpm build         # produces dist/
 
 That passing test run proves your setup works.
 
-To develop against a real API, run [zenith-api](https://github.com/Elizabethxxx/zenith-api) locally (its README has the steps), then:
+To develop against a real API, run [zenith-api](https://github.com/Zenith-Defi/zenith-api) locally (its README has the steps), then:
 
 ```bash
 ZENITH_API_KEY=zk_test_... ZENITH_BASE_URL=http://localhost:8787 pnpm test

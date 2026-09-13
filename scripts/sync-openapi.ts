@@ -11,7 +11,7 @@ import { writeFileSync } from "node:fs";
 import { execSync } from "node:child_process";
 
 const DEFAULT_URL =
-  "https://raw.githubusercontent.com/Elizabethxxx/zenith-api/main/openapi.json";
+  "https://raw.githubusercontent.com/Zenith-Defi/zenith-api/main/openapi.json";
 const url = process.env.ZENITH_OPENAPI_URL ?? DEFAULT_URL;
 
 async function main() {
