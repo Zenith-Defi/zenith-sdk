@@ -6,8 +6,10 @@ import type {
   CreateWebhookEndpoint,
   Invoice,
   ListParams,
+  Merchant,
   Page,
   Payment,
+  WebhookDelivery,
   WebhookEndpoint,
 } from "./types.js";
 
@@ -47,6 +49,11 @@ export class Zenith {
     this.payments = new PaymentsResource(this);
     this.webhookEndpoints = new WebhookEndpointsResource(this);
     this.apiKeys = new ApiKeysResource(this);
+  }
+
+  /** The merchant this key belongs to. */
+  me(): Promise<Merchant> {
+    return this.request<Merchant>("GET", "/v1/me");
   }
 
   /** @internal */
@@ -141,5 +148,15 @@ class WebhookEndpointsResource {
 
   delete(id: string): Promise<void> {
     return this.client.request("DELETE", `/v1/webhook-endpoints/${encodeURIComponent(id)}`);
+  }
+
+  deliveries(id: string, params: ListParams = {}): Promise<{ data: WebhookDelivery[] }> {
+    return this.client.request("GET", `/v1/webhook-endpoints/${encodeURIComponent(id)}/deliveries`, {
+      query: { limit: params.limit, cursor: params.cursor },
+    });
+  }
+
+  replay(deliveryId: string): Promise<{ deliveryId: string }> {
+    return this.client.request("POST", `/v1/webhook-deliveries/${encodeURIComponent(deliveryId)}/replay`);
   }
 }

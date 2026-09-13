@@ -13,6 +13,8 @@ export type WebhookEndpoint = components["schemas"]["WebhookEndpoint"];
 export type CreateWebhookEndpoint = components["schemas"]["CreateWebhookEndpoint"];
 export type ApiKey = components["schemas"]["ApiKey"];
 export type CreateApiKey = components["schemas"]["CreateApiKey"];
+export type Merchant = components["schemas"]["Merchant"];
+export type WebhookDelivery = components["schemas"]["WebhookDelivery"];
 
 export type InvoiceStatus = Invoice["status"];
 

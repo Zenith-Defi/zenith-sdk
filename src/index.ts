@@ -13,6 +13,8 @@ export type {
   CreateWebhookEndpoint,
   ApiKey,
   CreateApiKey,
+  Merchant,
+  WebhookDelivery,
   WebhookEvent,
   WebhookEventMap,
   Page,
