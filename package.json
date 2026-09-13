@@ -37,7 +37,7 @@
     "test:watch": "vitest",
     "sync:openapi": "tsx scripts/sync-openapi.ts",
     "generate": "openapi-typescript openapi/openapi.json -o src/generated/openapi.ts",
-    "prepack": "pnpm build"
+    "prepare": "pnpm build"
   },
   "dependencies": {},
   "devDependencies": {
